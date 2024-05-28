@@ -1,0 +1,2 @@
+LoganF -- 2024-05-27 23:18
+Group worked on design document over weekend; submitted for review. Started basic project start (django files, requirements_env, etc).
