@@ -21,4 +21,5 @@ import core.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('pokedex/', include('pokedex.urls', namespace='pokedex')),
 ]
