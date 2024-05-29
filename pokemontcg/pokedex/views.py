@@ -4,9 +4,18 @@ import json
 import http.client
 import requests
 
-from .models import Pokemon, Type, Trainer, Energy
-
+from .models import Pokemon, Type, Trainer, Energy, PokemonNames
+from django.views.generic import ListView
 # Create your views here.
+
+class PokemonListView(ListView):
+    model = Pokemon
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pokemon'] = PokemonNames.objects.all()
+        return context
+    
 def loadInitialData(request):
     if Type.objects.count() > 0:
 
