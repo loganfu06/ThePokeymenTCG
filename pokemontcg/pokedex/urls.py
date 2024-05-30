@@ -8,5 +8,5 @@ urlpatterns = [
     path("test", views.testView, name="test"),
     path("loadInitialData", views.loadInitialData, name="loadInitialData"),
     path("create/<str:card_id>", views.createPokemonCard, name="create"),
-    path("search", views.searchView, name="search")
+    path("search/<str:card_name>", views.searchView, name="search")
 ]

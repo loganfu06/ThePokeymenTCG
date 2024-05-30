@@ -213,5 +213,11 @@ def createPokemonCard(request, card_id):
 def testView(request):
     return render(request, 'pokedex/test.html')
 
-def searchView(request):
-    return render(request, 'pokedex/pokedex_search.html')
+def searchView(request, card_name):
+    api_url = 'https://api.pokemontcg.io/v2/cards?q=name:{f_cardName}*'.format(f_cardName = card_name)
+    response = requests.get(api_url)
+    data = response.json()['data']
+    context = {
+        'search_data': data,
+    }
+    return render(request, 'pokedex/pokedex_search.html', context)

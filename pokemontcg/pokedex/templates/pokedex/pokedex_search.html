@@ -6,7 +6,7 @@
 {% endblock content %} 
 {% block js %} {{ block.super }}
 <script>
-	
+	var ext_search_data = {{ search_data | safe}}
 </script>
 {% vite_hmr_client %} {% vite_asset 'src/apps/pokedex_search/pokedex_search.js' %} 
 {% endblock js %}
