@@ -3,3 +3,6 @@ Group worked on design document over weekend; submitted for review. Started basi
 
 LoganF -- 2024-05-28 23:06
 Made the models from the design doc into django. Implemented an initial data view, and a view that inserts a pokemon card from their card ID into the respective model database by calling the API.
+
+LoganF -- 2024-05-29 22:52
+Configured vue with django. Vue now connects with a search view. Need to work on passing API data/search query results into Vue.
