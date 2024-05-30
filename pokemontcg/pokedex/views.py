@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 import json
 import http.client
 import requests
+from django.contrib import messages
 
 from .models import Pokemon, Type, Trainer, Energy
 
@@ -30,6 +31,10 @@ def loadInitialData(request):
         insertInitialCards()
         
         # Add code for message about initial data successfully loading
+        messages.add_message(
+            request, messages.SUCCESS,
+            'Successfully loaded all Types.'
+        )
 
         # print("Type data successfully loaded")
         return redirect('pokedex:test')
@@ -198,6 +203,10 @@ def createPokemonCard(request, card_id):
 
 
         # print(card_data)
+        messages.add_message(
+            request, messages.SUCCESS,
+            'added bro.'
+        )
 
     return redirect('pokedex:test')
 
