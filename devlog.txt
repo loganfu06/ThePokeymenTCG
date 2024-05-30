@@ -3,3 +3,7 @@ Group worked on design document over weekend; submitted for review. Started basi
 
 LoganF -- 2024-05-28 23:06
 Made the models from the design doc into django. Implemented an initial data view, and a view that inserts a pokemon card from their card ID into the respective model database by calling the API.
+
+
+CalvinP -- 2024-05-29 14:49
+Created the url, pokemon_list.html template, and list view 

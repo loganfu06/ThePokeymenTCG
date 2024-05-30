@@ -13,7 +13,7 @@ class PokemonListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pokemon'] = PokemonNames.objects.all()
+        context['pokemon_names'] = PokemonNames.objects.all()
         return context
     
 def loadInitialData(request):

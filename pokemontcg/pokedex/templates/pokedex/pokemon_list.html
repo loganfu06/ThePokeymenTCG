@@ -1,0 +1,7 @@
+<h1>
+    Hello. This is Pokemon list
+</h1>
+
+{% for name_object in pokedex_pokemon %}
+<ul> {{name_object.name}}>{{name_object.name|title}}</ul>
+{% endfor %}
