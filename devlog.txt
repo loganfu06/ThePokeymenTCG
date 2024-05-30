@@ -6,3 +6,6 @@ Made the models from the design doc into django. Implemented an initial data vie
 
 LoganF -- 2024-05-29 22:52
 Configured vue with django. Vue now connects with a search view. Need to work on passing API data/search query results into Vue.
+
+MarcusN -- 2024-05-29 14:50
+Added authentication and base.html. Fixed pgadmin bugs and worked on templates.
