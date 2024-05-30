@@ -205,4 +205,4 @@ def testView(request):
     return render(request, 'pokedex/test.html')
 
 def detailView(request):
-    return redner(request)
+    return redner(request, 'pokedex/detailView.html')
