@@ -203,3 +203,6 @@ def createPokemonCard(request, card_id):
 
 def testView(request):
     return render(request, 'pokedex/test.html')
+
+def searchView(request):
+    return render(request, 'pokedex/pokedex_search.html')

@@ -1,0 +1,12 @@
+{% extends "base.html" %} 
+{% load django_vite %} {% block content %}
+<div id="app">
+	<app></app>
+</div>
+{% endblock content %} 
+{% block js %} {{ block.super }}
+<script>
+	
+</script>
+{% vite_hmr_client %} {% vite_asset 'src/apps/pokedex_search/pokedex_search.js' %} 
+{% endblock js %}
