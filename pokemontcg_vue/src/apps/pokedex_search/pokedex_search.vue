@@ -8,7 +8,7 @@ export default {
   components: {},
   data: function () {
     return {
-      search_data: ext_search_data,
+      search_data: JSON.parse(ext_search_data),
     }
   },
   methods: {
