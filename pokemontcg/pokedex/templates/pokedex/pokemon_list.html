@@ -1,0 +1,15 @@
+<h1>
+    Hello. This is Pokemon lists
+</h1>
+<table>
+<tr><th>Name<th><th>Card</th></tr>
+
+{% for pokemon in object_list %}
+<tr>
+<td>{{pokemon.name}}</td>
+<td><img src='{{pokemon.image}}' width="20%" height="20%"></td>
+</tr>
+{% endfor %}
+
+
+</table>

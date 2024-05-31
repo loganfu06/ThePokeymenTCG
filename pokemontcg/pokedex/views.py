@@ -6,10 +6,21 @@ import requests
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Pokemon, Type, Trainer, Energy
-
+from .models import Pokemon, Type, Trainer, Energy, PokemonNames
+from django.views.generic import ListView
 # Create your views here.
 
+<<<<<<< HEAD
+=======
+class PokemonListView(ListView):
+    model = Pokemon
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pokemon_names'] = PokemonNames.objects.all()
+        return context
+    
+>>>>>>> ebc97045dced5eae8a43c02186759147b42ce30b
 def loadInitialData(request):
     if Type.objects.count() > 0:
 
