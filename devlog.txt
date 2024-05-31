@@ -8,7 +8,13 @@ LoganF -- 2024-05-29 22:52
 Configured vue with django. Vue now connects with a search view. Need to work on passing API data/search query results into Vue.
 
 CalvinP -- 2024-05-29 14:49
-Created the url, pokemon_list.html template, and list view.
+Created the url, pokemon_list.html template, and list view. Fixed problem with migrating on pgadmin.
 
 MarcusN -- 2024-05-29 14:50
 Added authentication and base.html. Fixed pgadmin bugs and worked on templates. Added messages
+
+CalvinP -- 2024-05-30 14:45
+Successfully displayed card name and image on list view.
+
+MarcusN -- 2024-05-30 14:50
+Created home page and navbar.
