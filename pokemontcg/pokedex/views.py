@@ -3,11 +3,15 @@ from django.shortcuts import render, redirect
 import json
 import http.client
 import requests
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Pokemon, Type, Trainer, Energy, PokemonNames
 from django.views.generic import ListView
 # Create your views here.
 
+<<<<<<< HEAD
+=======
 class PokemonListView(ListView):
     model = Pokemon
 
@@ -16,13 +20,18 @@ class PokemonListView(ListView):
         context['pokemon_names'] = PokemonNames.objects.all()
         return context
     
+>>>>>>> ebc97045dced5eae8a43c02186759147b42ce30b
 def loadInitialData(request):
     if Type.objects.count() > 0:
 
         # Add code for message about initial data already loaded
+        messages.add_message(
+            request, messages.SUCCESS,
+            'Types already loaded.'
+        )
 
         print("Type data already loaded")
-        return redirect('pokedex:test')
+        return redirect('pokedex:home')
     else:
         api_url = 'https://api.pokemontcg.io/v2/types'
         response = requests.get(api_url)
@@ -39,9 +48,13 @@ def loadInitialData(request):
         insertInitialCards()
         
         # Add code for message about initial data successfully loading
+        messages.add_message(
+            request, messages.SUCCESS,
+            'Successfully loaded all Types.'
+        )
 
         # print("Type data successfully loaded")
-        return redirect('pokedex:test')
+        return redirect('pokedex:home')
     
 def insertInitialCards():
     api_url = 'https://api.pokemontcg.io/v2/cards?q=set.id:base1'
@@ -207,8 +220,15 @@ def createPokemonCard(request, card_id):
 
 
         # print(card_data)
+        messages.add_message(
+            request, messages.SUCCESS,
+            'added ' + card_data['name'] + '.'
+        )
 
     return redirect('pokedex:test')
 
 def testView(request):
     return render(request, 'pokedex/test.html')
+
+def homeView(request):
+    return render(request, 'pokedex/home.html')
