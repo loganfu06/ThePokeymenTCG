@@ -1,39 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<html>
+
 <title>Pokedex List</title>
 <head>
-    <style>
-    body {
-        margin: 0;
-        width: 100vw;
-        height: 100vh;
-    }
-    
-    div {
-        width: 100vw;
-        height: 100vh;
-    }
-    </style>
 </head>
 <h1>
     Hello. This is Pokemon lists
 </h1>
 <body>
-<div class="table-responsive-sm">
-<table>
+    
 
-
+<table class="table" width = "100%">
 {% for pokemon in object_list %}
 
-<td>{{pokemon.name}}<br><img src='{{pokemon.image}}' width="100%" height="100%"></td>
+<td width = "200px">{{pokemon.name}}<br><img src='{{pokemon.image}}' width="100%" height="100%"></td>
 
 {% endfor %}
 
 
 </table>
-<div>
+
 </body>
-</html>
+
+
 {% endblock content %}
