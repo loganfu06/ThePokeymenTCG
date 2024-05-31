@@ -15,3 +15,6 @@ Added authentication and base.html. Fixed pgadmin bugs and worked on templates. 
 
 CalvinP -- 2024-05-30 14:45
 Successfully displayed card name and image on list view.
+
+MarcusN -- 2024-05-30 14:50
+Created home page and navbar.
