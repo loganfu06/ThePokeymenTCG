@@ -216,7 +216,8 @@ def testView(request):
 def searchView(request, card_name):
     api_url = 'https://api.pokemontcg.io/v2/cards?q=name:{f_cardName}*'.format(f_cardName = card_name)
     response = requests.get(api_url)
-    data = response.json()['data']
+    data = json.dumps(response.json()['data'])
+    print(type(data))
     context = {
         'search_data': data,
     }
