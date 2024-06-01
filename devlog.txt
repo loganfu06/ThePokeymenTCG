@@ -18,3 +18,6 @@ Successfully displayed card name and image on list view.
 
 MarcusN -- 2024-05-30 14:50
 Created home page and navbar.
+
+LoganF -- 2024-05-31 22:49
+Got search data from api in an accessible array in Vue. Need to work on displaying search results in a reactive table (ie filtered by rarity, price, etc)
