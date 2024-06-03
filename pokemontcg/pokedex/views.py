@@ -149,7 +149,7 @@ def createPokemonCard(request, card_id):
     if Type.objects.count() == 0:
         # Add code for error message about needing to load initial data first
         print("Please load initial data")
-        return redirect('pokedex:test')
+        return redirect('pokedex:pokemon_list')
 
     api_url = 'https://api.pokemontcg.io/v2/cards/{f_cardID}'.format(f_cardID = card_id)
     response = requests.get(api_url)
@@ -162,7 +162,7 @@ def createPokemonCard(request, card_id):
                 if Pokemon.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
-                    return redirect('pokedex:test')
+                    return redirect('pokedex:pokemon_list')
                 
                 conditions = card_data['tcgplayer']['prices']
                 highest_market = 0
@@ -191,7 +191,7 @@ def createPokemonCard(request, card_id):
                 if Trainer.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
-                    return redirect('pokedex:test')
+                    return redirect('pokedex:trainer_list')
                 
                 conditions = card_data['tcgplayer']['prices']
                 highest_market = 0
@@ -215,7 +215,7 @@ def createPokemonCard(request, card_id):
                 if Energy.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
-                    return redirect('pokedex:test')
+                    return redirect('pokedex:energy_list')
                 
                 conditions = card_data['tcgplayer']['prices']
                 highest_market = 0
@@ -245,7 +245,7 @@ def createPokemonCard(request, card_id):
             'added ' + card_data['name'] + '.'
         )
 
-    return redirect('pokedex:test')
+    return redirect('pokedex:pokemon_list')
 
 def testView(request):
     return render(request, 'pokedex/test.html')
