@@ -8,6 +8,8 @@
 <script>
 	var ext_search_data = {{ search_data | safe }};
 	var ext_card_name = '{{ card_name }}';
+	var ext_rarities = {{ rarities | safe }};
+	var ext_create_url = '{% url 'pokedex:create' 1 %}'
 </script>
 {% vite_hmr_client %} {% vite_asset 'src/apps/pokedex_search/pokedex_search.js' %} 
 {% endblock js %}

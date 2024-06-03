@@ -217,9 +217,12 @@ def searchView(request, card_name):
     api_url = 'https://api.pokemontcg.io/v2/cards?q=name:{f_cardName}*'.format(f_cardName = card_name)
     response = requests.get(api_url)
     data = json.dumps(response.json()['data'])
+    response = requests.get("https://api.pokemontcg.io/v2/rarities")
+    rarities = json.dumps(response.json()['data'])
     print(type(data))
     context = {
         'search_data': data,
         'card_name': str(card_name),
+        'rarities': rarities,
     }
     return render(request, 'pokedex/pokedex_search.html', context)
