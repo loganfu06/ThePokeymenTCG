@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
 from django.shortcuts import get_object_or_404
 
-from .models import Pokemon, Type, Trainer, Energy, PokemonNames
+from .models import Pokemon, Type, Trainer, Energy, PokemonNames, TrainerNames,EnergyNames
 from django.views.generic import ListView
 from django.forms.models import model_to_dict
 from django.views.generic import TemplateView
@@ -25,6 +25,22 @@ class PokemonListView(ListView):
         context['pokemon_names'] = PokemonNames.objects.all()
         return context
     
+class TrainerListView(ListView):
+    model = Trainer
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['trainer_names'] = TrainerNames.objects.all()
+        return context
+    
+class EnergyListView(ListView):
+    model = Energy
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['energy_names'] = EnergyNames.objects.all()
+        return context
+
 def loadInitialData(request):
     if Type.objects.count() > 0:
 
