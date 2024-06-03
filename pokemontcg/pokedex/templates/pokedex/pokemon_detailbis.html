@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% load django_vite %} {% block content %}
+<div id="app">
+	<app></app>
+</div>
+{% endblock content %} {% block js %} {{ block.super }}
+<script>
+	var ext_id = '{{ object.id | safe }}';
+	var ext_pokemon_detail_js_url = '{% url 'pokedex:pokemon_detail_js' pokemon_id %}';
+	var ext_pokemon_list_url = '{% url 'pokedex:pokemon_list' %}';
+    {% comment %} var ext_pokemon_update_url = '{% url 'pokemon:pokemon_update' pokemon_id %}';
+	var ext_pokemon_delete_url ='{% url 'pokemon:pokemon_delete' pokemon_id %}'; {% endcomment %}
+</script>
+{% vite_hmr_client %} {% vite_asset 'src/apps/pokemon_detail/pokemon_detail.js' %} {% endblock js %}

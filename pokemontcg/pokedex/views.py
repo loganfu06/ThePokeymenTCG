@@ -4,17 +4,54 @@ import json
 import http.client
 import requests
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.detail import DetailView
+from django.shortcuts import get_object_or_404
 
-from .models import Pokemon, Type, Trainer, Energy
+from .models import Pokemon, Type, Trainer, Energy, PokemonNames, TrainerNames,EnergyNames
+from django.views.generic import ListView
+from django.forms.models import model_to_dict
+from django.views.generic import TemplateView
+from django.http import JsonResponse
+from django.views import View
 
 # Create your views here.
+
+class PokemonListView(ListView):
+    model = Pokemon
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pokemon_names'] = PokemonNames.objects.all()
+        return context
+    
+class TrainerListView(ListView):
+    model = Trainer
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['trainer_names'] = TrainerNames.objects.all()
+        return context
+    
+class EnergyListView(ListView):
+    model = Energy
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['energy_names'] = EnergyNames.objects.all()
+        return context
+
 def loadInitialData(request):
     if Type.objects.count() > 0:
 
         # Add code for message about initial data already loaded
+        messages.add_message(
+            request, messages.SUCCESS,
+            'Types already loaded.'
+        )
 
         print("Type data already loaded")
-        return redirect('pokedex:test')
+        return redirect('pokedex:home')
     else:
         api_url = 'https://api.pokemontcg.io/v2/types'
         response = requests.get(api_url)
@@ -37,7 +74,7 @@ def loadInitialData(request):
         )
 
         # print("Type data successfully loaded")
-        return redirect('pokedex:test')
+        return redirect('pokedex:home')
     
 def insertInitialCards():
     api_url = 'https://api.pokemontcg.io/v2/cards?q=set.id:base1'
@@ -205,7 +242,7 @@ def createPokemonCard(request, card_id):
         # print(card_data)
         messages.add_message(
             request, messages.SUCCESS,
-            'added bro.'
+            'added ' + card_data['name'] + '.'
         )
 
     return redirect('pokedex:test')
@@ -226,3 +263,25 @@ def searchView(request, card_name):
         'rarities': rarities,
     }
     return render(request, 'pokedex/pokedex_search.html', context)
+
+def homeView(request):
+    return render(request, 'pokedex/home.html')
+
+class PokemonDetailView(DetailView):
+    model = Pokemon
+    
+class PokemonDetailbisView(TemplateView):
+    template_name = "pokedex/pokemon_detailbis.html"
+    def get(self, request, *args, **kwargs):
+        pokemon = get_object_or_404(Pokemon, pk=self.kwargs["pk"])
+        return super().get(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pokemon_id'] = self.kwargs["pk"]
+        return context
+
+class PokemonDetailJsView(View):
+    def get(self, request, *args, **kwargs):
+        pokemon = get_object_or_404(Pokemon, pk=self.kwargs["pk"])
+        pokemon_js = model_to_dict(pokemon)
+        return JsonResponse({"pokemon": pokemon_js})

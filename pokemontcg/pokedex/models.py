@@ -26,6 +26,12 @@ class Trainer(models.Model):
     image = models.CharField()
     prices = models.JSONField(default=list)
     highest_market_price = models.FloatField()
+    
+    class Meta:
+        ordering = ['name']
+        
+    def __str__(self):
+    		return self.name
 
 class Energy(models.Model):
     card_id = models.CharField(default=None)
@@ -33,4 +39,18 @@ class Energy(models.Model):
     image = models.CharField()
     prices = models.JSONField(default=list)
     highest_market_price = models.FloatField()
+    
+    class Meta:
+        ordering = ['name']
+        
+    def __str__(self):
+    		return self.name
 
+class PokemonNames(models.Model):
+    name = models.CharField(max_length=100)
+    
+class TrainerNames(models.Model):
+    name = models.CharField(max_length=100)
+
+class EnergyNames(models.Model):
+    name = models.CharField(max_length=100)
