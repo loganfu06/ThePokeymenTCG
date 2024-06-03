@@ -1,6 +1,17 @@
 <template>
-    <h1>This is a test (from Vue!!!)</h1>
-    <li v-for="data in search_data"><h2>{{ data['name'] }} - {{ data['id'] }}</h2></li>
+    <h1>Search Results for "{{ card_name }}"</h1>
+    <table>
+      <!-- <thead>
+        <tr>
+          <th></th>
+        </tr>
+      </thead> -->
+      <tbody>
+        <tr v-for="data in search_data">
+          <td>{{ data['name'] }}</td>
+        </tr>
+      </tbody>
+    </table>
 </template>
 
 <script>
@@ -10,6 +21,7 @@ export default {
   data: function () {
     return {
       search_data: ext_search_data,
+      card_name: window.ext_card_name,
     }
   },
   methods: {

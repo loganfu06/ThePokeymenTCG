@@ -220,5 +220,6 @@ def searchView(request, card_name):
     print(type(data))
     context = {
         'search_data': data,
+        'card_name': str(card_name),
     }
     return render(request, 'pokedex/pokedex_search.html', context)
