@@ -5,9 +5,16 @@ import http.client
 import requests
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.detail import DetailView
+from django.shortcuts import get_object_or_404
 
 from .models import Pokemon, Type, Trainer, Energy, PokemonNames
 from django.views.generic import ListView
+from django.forms.models import model_to_dict
+from django.views.generic import TemplateView
+from django.http import JsonResponse
+from django.views import View
+
 # Create your views here.
 
 class PokemonListView(ListView):
@@ -229,3 +236,22 @@ def testView(request):
 
 def homeView(request):
     return render(request, 'pokedex/home.html')
+
+class PokemonDetailView(DetailView):
+    model = Pokemon
+    
+class PokemonDetailbisView(TemplateView):
+    template_name = "pokedex/pokemon_detailbis.html"
+    def get(self, request, *args, **kwargs):
+        pokemon = get_object_or_404(Pokemon, pk=self.kwargs["pk"])
+        return super().get(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pokemon_id'] = self.kwargs["pk"]
+        return context
+
+class PokemonDetailJsView(View):
+    def get(self, request, *args, **kwargs):
+        pokemon = get_object_or_404(Pokemon, pk=self.kwargs["pk"])
+        pokemon_js = model_to_dict(pokemon)
+        return JsonResponse({"pokemon": pokemon_js})
