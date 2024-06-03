@@ -149,8 +149,8 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "pokemontcg_static")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = "/pokedex/"
-LOGOUT_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/pokedex/home"
+LOGOUT_REDIRECT_URL = "/accounts/login"
 
 
 DJANGO_VITE_ASSETS_PATH = os.path.join(BASE_DIR, "core", "static", "vite")

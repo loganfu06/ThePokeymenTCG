@@ -34,3 +34,5 @@ class Energy(models.Model):
     prices = models.JSONField(default=list)
     highest_market_price = models.FloatField()
 
+class PokemonNames(models.Model):
+    name = models.CharField(max_length=100)
