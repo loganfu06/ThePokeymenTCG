@@ -17,7 +17,7 @@ CalvinP -- 2024-05-30 14:45
 Successfully displayed card name and image on list view.
 
 MarcusN -- 2024-05-30 14:50
-Created home page and navbar.
+Created home page and navbar. Got started on detail view, but had little success.
 
 LoganF -- 2024-05-31 22:49
 Got search data from api in an accessible array in Vue. Need to work on displaying search results in a reactive table (ie filtered by rarity, price, etc)
@@ -27,3 +27,9 @@ Updated pokemon list view, looks a lot better and now extends base
 
 LoganF -- 2024-06-03 18:00
 Worked on displaying search results, and added an option to filter by rarity. Buttons also add the proper card. Need to work on the CSS to make it look nice.
+
+MarcusN -- 2024-06-03 14:45
+Worked on detailbis, fixed many errors, tried to get data onto vue
+
+MarcusN -- 2024-06-03 20:56
+Completed detail bis, now displays name and card. Added clickable cards onto pokemon_list that send you to detail view.
