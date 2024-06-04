@@ -21,3 +21,9 @@ Created home page and navbar.
 
 LoganF -- 2024-05-31 22:49
 Got search data from api in an accessible array in Vue. Need to work on displaying search results in a reactive table (ie filtered by rarity, price, etc)
+
+CalvinP -- 2024-06-01 23:50
+Updated pokemon list view, looks a lot better and now extends base
+
+LoganF -- 2024-06-03 18:00
+Worked on displaying search results, and added an option to filter by rarity. Buttons also add the proper card. Need to work on the CSS to make it look nice.

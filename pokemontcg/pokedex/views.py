@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
 from django.shortcuts import get_object_or_404
 
-from .models import Pokemon, Type, Trainer, Energy, PokemonNames
+from .models import Pokemon, Type, Trainer, Energy, PokemonNames, TrainerNames,EnergyNames
 from django.views.generic import ListView
 from django.forms.models import model_to_dict
 from django.views.generic import TemplateView
@@ -25,6 +25,22 @@ class PokemonListView(ListView):
         context['pokemon_names'] = PokemonNames.objects.all()
         return context
     
+class TrainerListView(ListView):
+    model = Trainer
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['trainer_names'] = TrainerNames.objects.all()
+        return context
+    
+class EnergyListView(ListView):
+    model = Energy
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['energy_names'] = EnergyNames.objects.all()
+        return context
+
 def loadInitialData(request):
     if Type.objects.count() > 0:
 
@@ -133,7 +149,7 @@ def createPokemonCard(request, card_id):
     if Type.objects.count() == 0:
         # Add code for error message about needing to load initial data first
         print("Please load initial data")
-        return redirect('pokedex:test')
+        return redirect('pokedex:pokemon_list')
 
     api_url = 'https://api.pokemontcg.io/v2/cards/{f_cardID}'.format(f_cardID = card_id)
     response = requests.get(api_url)
@@ -146,7 +162,7 @@ def createPokemonCard(request, card_id):
                 if Pokemon.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
-                    return redirect('pokedex:test')
+                    return redirect('pokedex:pokemon_list')
                 
                 conditions = card_data['tcgplayer']['prices']
                 highest_market = 0
@@ -175,7 +191,7 @@ def createPokemonCard(request, card_id):
                 if Trainer.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
-                    return redirect('pokedex:test')
+                    return redirect('pokedex:trainer_list')
                 
                 conditions = card_data['tcgplayer']['prices']
                 highest_market = 0
@@ -199,7 +215,7 @@ def createPokemonCard(request, card_id):
                 if Energy.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
-                    return redirect('pokedex:test')
+                    return redirect('pokedex:energy_list')
                 
                 conditions = card_data['tcgplayer']['prices']
                 highest_market = 0
@@ -229,10 +245,24 @@ def createPokemonCard(request, card_id):
             'added ' + card_data['name'] + '.'
         )
 
-    return redirect('pokedex:test')
+    return redirect('pokedex:pokemon_list')
 
 def testView(request):
     return render(request, 'pokedex/test.html')
+
+def searchView(request, card_name):
+    api_url = 'https://api.pokemontcg.io/v2/cards?q=name:{f_cardName}*'.format(f_cardName = card_name)
+    response = requests.get(api_url)
+    data = json.dumps(response.json()['data'])
+    response = requests.get("https://api.pokemontcg.io/v2/rarities")
+    rarities = json.dumps(response.json()['data'])
+    print(type(data))
+    context = {
+        'search_data': data,
+        'card_name': str(card_name),
+        'rarities': rarities,
+    }
+    return render(request, 'pokedex/pokedex_search.html', context)
 
 def homeView(request):
     return render(request, 'pokedex/home.html')
