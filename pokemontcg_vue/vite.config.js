@@ -16,6 +16,7 @@ export default defineConfig({
     outDir: backendPath + '/core/static/vite/',
     rollupOptions: {
       input: {
+        vue_pokemon_detail: './src/apps/pokemon_detail/pokemon_detail.js',
         vue_pokedex_search: './src/apps/pokedex_search/pokedex_search.js',
       }
     }

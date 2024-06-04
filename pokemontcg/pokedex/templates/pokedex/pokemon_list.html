@@ -53,8 +53,8 @@
         <div class="pokemon">
             {% for pokemon in object_list %}
             <div class="pokemon-card">
-                <img class="pokemon-img" src="{{ pokemon.image }}" alt="{{ pokemon.name }}">
-                <div class="pokemon-name">{{ pokemon.name }}</div>
+                <a href="{% url 'pokedex:pokemon_detail_bis' pk=pokemon.id %}"> <img class="pokemon-img" src="{{ pokemon.image }}" alt="{{ pokemon.name }}"> </a>
+                <div class="pokemon-name" >{{ pokemon.name }}</div>
             </div>
             {% endfor %}
         </div>

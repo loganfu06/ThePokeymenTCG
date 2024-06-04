@@ -272,16 +272,28 @@ class PokemonDetailView(DetailView):
     
 class PokemonDetailbisView(TemplateView):
     template_name = "pokedex/pokemon_detailbis.html"
+    
     def get(self, request, *args, **kwargs):
         pokemon = get_object_or_404(Pokemon, pk=self.kwargs["pk"])
         return super().get(request, *args, **kwargs)
+    
     def get_context_data(self, **kwargs):
+        pokemon = get_object_or_404(Pokemon, pk=self.kwargs["pk"])
         context = super().get_context_data(**kwargs)
+        pokemon_dico = model_to_dict(pokemon)
+        print(pokemon_dico)
+        types = pokemon_dico["types"]
+        type_list = []
+        for sometype in types:
+            type_list.append({"id": sometype.id, "name": sometype.name})
+        pokemon_dico["types"] = type_list
+        
+        context["pokemon_list"] = pokemon_dico
         context['pokemon_id'] = self.kwargs["pk"]
         return context
 
 class PokemonDetailJsView(View):
     def get(self, request, *args, **kwargs):
         pokemon = get_object_or_404(Pokemon, pk=self.kwargs["pk"])
-        pokemon_js = model_to_dict(pokemon)
+        pokemon_js = model_to_dict(Pokemon)
         return JsonResponse({"pokemon": pokemon_js})
