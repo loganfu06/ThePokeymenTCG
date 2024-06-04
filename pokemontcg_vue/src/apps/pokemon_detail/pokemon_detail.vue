@@ -4,6 +4,7 @@
       <!-- <a :href="this.pokemon_update_url">Update Food</a><br />
       <a :href="this.pokemon_delete_url">Delete Food</a><br /> -->
       <h1>Name: {{this.pokemon.name}}</h1>
+      <img :src="this.pokemon.image" width="50%">
     </div>
   </template>
   <script>
