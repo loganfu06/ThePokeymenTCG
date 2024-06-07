@@ -37,5 +37,3 @@ class Energy(models.Model):
 class PokemonNames(models.Model):
     name = models.CharField(max_length=100)
     
-class TrainerNames(models.Model):
-    name = models.CharField(max_length=100)

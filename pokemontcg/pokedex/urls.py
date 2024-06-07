@@ -10,5 +10,4 @@ urlpatterns = [
     path("loadInitialData", views.loadInitialData, name="loadInitialData"),
     path("create/<str:card_id>", views.createPokemonCard, name="create"),
     path("", views.homeView, name='home'),
-    path("trainer", views.TrainerListView.as_view(), name="trainer"),
 ]

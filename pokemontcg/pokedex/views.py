@@ -18,14 +18,6 @@ class PokemonListView(ListView):
         context['pokemon_names'] = PokemonNames.objects.all()
         return context
     
-class TrainerListView(ListView):
-    model = Trainer
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # context['trainer_names'] = TrainerNames.objects.all()
-        return context
-    
 def loadInitialData(request):
     if Type.objects.count() > 0:
 
