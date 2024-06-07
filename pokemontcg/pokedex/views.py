@@ -266,10 +266,6 @@ def searchView(request, card_name):
 
 def homeView(request):
     return render(request, 'pokedex/home.html')
-<<<<<<< HEAD
-def detailView(request):
-    return redner(request, 'pokedex/detailView.html')
-=======
 
 class PokemonDetailView(DetailView):
     model = Pokemon
@@ -301,4 +297,3 @@ class PokemonDetailJsView(View):
         pokemon = get_object_or_404(Pokemon, pk=self.kwargs["pk"])
         pokemon_js = model_to_dict(Pokemon)
         return JsonResponse({"pokemon": pokemon_js})
->>>>>>> 79bbdd3e21f437b0a71f3a21fb9d969356286901

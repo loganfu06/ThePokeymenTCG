@@ -48,13 +48,10 @@ class Energy(models.Model):
 
 class PokemonNames(models.Model):
     name = models.CharField(max_length=100)
-<<<<<<< HEAD
     
-=======
     
 class TrainerNames(models.Model):
     name = models.CharField(max_length=100)
 
 class EnergyNames(models.Model):
     name = models.CharField(max_length=100)
->>>>>>> 79bbdd3e21f437b0a71f3a21fb9d969356286901

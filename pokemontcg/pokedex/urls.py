@@ -12,12 +12,8 @@ urlpatterns = [
     path("test", views.testView, name="test"),
     path("loadInitialData", views.loadInitialData, name="loadInitialData"),
     path("create/<str:card_id>", views.createPokemonCard, name="create"),
-<<<<<<< HEAD
-    path("", views.homeView, name='home'),
-=======
     path("search/<str:card_name>", views.searchView, name="search"),
     path("", views.homeView, name='home'),
     path("bis/<int:pk>", views.PokemonDetailbisView.as_view(), name="pokemon_detail_bis",),
     path( "js/<int:pk>", views.PokemonDetailJsView.as_view(), name="pokemon_detail_js", ),
->>>>>>> 79bbdd3e21f437b0a71f3a21fb9d969356286901
 ]
