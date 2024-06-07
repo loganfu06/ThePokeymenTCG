@@ -26,13 +26,15 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="http://127.0.0.1:8000/pokedex/">ThePokeymenTCG</a>
+            <a class="navbar-brand" href="{% url 'pokedex:home' %}">ThePokeymenTCG</a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href='http://127.0.0.1:8000/pokedex/loadInitialData'>Load Data</a></li>
-            <li><a href='http://127.0.0.1:8000/pokedex/delete'>Create</a></li>
-            <li><a href='http://127.0.0.1:8000/pokedex/create'>Delete</a></li>
+            <li class="active"><a href="{% url 'pokedex:home' %}">Home</a></li>
+            <li><a href="{% url 'pokedex:loadInitialData' %}">Load Data</a></li>
+            <li><a href="{% url 'pokedex:pokemon_list' %}">Pokemon List</a></li>
+            <li><a href="{% url 'pokedex:trainer_list' %}">Trainer List</a></li>
+            <li><a href="{% url 'pokedex:energy_list' %}">Energy List</a></li>
+            {% comment %} <li><a href="{% url 'pokedex:search' %}">Search</a></li> {% endcomment %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
