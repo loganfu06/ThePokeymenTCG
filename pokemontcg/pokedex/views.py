@@ -287,6 +287,8 @@ class PokemonDetailbisView(TemplateView):
         for sometype in types:
             type_list.append({"id": sometype.id, "name": sometype.name})
         pokemon_dico["types"] = type_list
+        print(type(pokemon_dico))
+        pokemon_dico = json.dumps(pokemon_dico)
         
         context["pokemon_list"] = pokemon_dico
         context['pokemon_id'] = self.kwargs["pk"]
