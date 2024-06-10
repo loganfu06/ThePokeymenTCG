@@ -6,8 +6,19 @@
     <option v-for="rarity in rarities">{{ rarity }}</option>
   </select>
 
+  <div class="container">
+    <div class="pokemon">
+      <div class="pokemon-card" v-for="pokemon in search_data" v-show="filterData(pokemon)" @click="createRedirect(pokemon)">
+        <img class="pokemon-img" :src="getImgUrl(pokemon)">
+        <div class="pokemon-name">{{ pokemon['name'] }}</div>
+        <div class="pokemon-rarity" v-if="pokemon['supertype'] == 'Pokémon' || pokemon['supertype'] == 'Trainer'">Rarity: {{ pokemon['rarity'] }}</div>
+      </div>
+    </div>
+  </div>
 
-  <table border="1px solid black">
+
+
+  <!-- <table border="1px solid black">
     <div style="width: 1000px; display: block;">
       <thead>
         <tr>
@@ -28,7 +39,7 @@
         </tr>
       </tbody>
     </div>
-  </table>
+  </table> -->
 </template>
 
 <script>
@@ -41,15 +52,19 @@ export default {
       card_name: window.ext_card_name,
       rarities: ext_rarities,
       current_rarity: "None",
-      createUrlBase: ext_create_url.slice(0,-1),
+      createUrlBase: ext_create_url.slice(0, -1),
     }
   },
   methods: {
     getImgUrl(data) {
-      var stringUrl = data['images']['small']
+      var stringUrl = data['images']['large']
       return new URL(stringUrl)
     },
     filterData(data) {
+      if (data['rarity'] == undefined && (data['supertype'] == 'Pokémon' || data['supertype'] == 'Trainer')) {
+        return false
+      }
+
       if (this.current_rarity == 'None') {
         return true
       }

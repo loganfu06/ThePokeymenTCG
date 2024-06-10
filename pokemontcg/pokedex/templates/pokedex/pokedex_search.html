@@ -1,8 +1,54 @@
 {% extends "base.html" %} 
 {% load django_vite %} {% block content %}
+<head>
+	<title>Search results</title>
+	<style>
+		body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .pokemon {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .pokemon-card {
+            width: calc(20% - 20px); 
+            margin-bottom: 20px;
+            margin-right: 20px; 
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			cursor: pointer;
+        }
+        .pokemon-img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+        .pokemon-name {
+            padding: 10px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+		.pokemon-rarity {
+			padding: 10px;
+            background-color: #f5f5f5;
+            text-align: center;
+		}
+	</style>
+</head>
+<body>
 <div id="app">
 	<app></app>
 </div>
+</body>
 {% endblock content %} 
 {% block js %} {{ block.super }}
 <script>

@@ -17,7 +17,7 @@ from django.views import View
 
 # Create your views here.
 
-class PokemonListView(ListView):
+class PokemonListView(LoginRequiredMixin, ListView):
     model = Pokemon
 
     def get_context_data(self, **kwargs):
@@ -25,7 +25,7 @@ class PokemonListView(ListView):
         context['pokemon_names'] = PokemonNames.objects.all()
         return context
     
-class TrainerListView(ListView):
+class TrainerListView(LoginRequiredMixin, ListView):
     model = Trainer
 
     def get_context_data(self, **kwargs):
@@ -33,7 +33,7 @@ class TrainerListView(ListView):
         context['trainer_names'] = TrainerNames.objects.all()
         return context
     
-class EnergyListView(ListView):
+class EnergyListView(LoginRequiredMixin, ListView):
     model = Energy
 
     def get_context_data(self, **kwargs):
