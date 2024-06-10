@@ -33,3 +33,6 @@ Worked on detailbis, fixed many errors, tried to get data onto vue
 
 MarcusN -- 2024-06-03 20:56
 Completed detail bis, now displays name and card. Added clickable cards onto pokemon_list that send you to detail view.
+
+LoganF -- 2024-06-10 13:44
+Finished the css for displaying search results, fixed error in detail view. Need to work on view that takes user input and redirects to search results url.
