@@ -40,9 +40,3 @@ https://pokemontcg.io/
 7. Go to 127.0.0.1:8000/pokedex
 - Load initial data using the initial data button (this may take some time)
 - The app is now ready to use!
-
-How to enter new Pokemon into the database:
-- In the Pokedex app, type a Pokemon name, or a part of a Pokemon's name, into the search bar on the Pokedex app. Then select the Pokemon from the dropdown, and press the "Add to Pokedex" button.
-
-How to battle two Pokemon:
-- In the Type app, select two Pokemon from the existing database, then press the "Battle Pokemon" button.
