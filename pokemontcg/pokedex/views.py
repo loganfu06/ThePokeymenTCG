@@ -300,32 +300,32 @@ class PokemonDetailJsView(View):
         pokemon_js = model_to_dict(Pokemon)
         return JsonResponse({"pokemon": pokemon_js})
 
-# class TrainerDetailbisView(TemplateView):
-#     template_name = "pokedex/trainer_detailbis.html"
+class TrainerDetailbisView(TemplateView):
+    template_name = "pokedex/trainer_detailbisT.html"
     
-#     def get(self, request, *args, **kwargs):
-#         trainer = get_object_or_404(Trainer, pk=self.kwargs["pk"])
-#         return super().get(request, *args, **kwargs)
+    def get(self, request, *args, **kwargs):
+        trainer = get_object_or_404(Trainer, pk=self.kwargs["pk"])
+        return super().get(request, *args, **kwargs)
     
-#     def get_context_data(self, **kwargs):
-#         trainer = get_object_or_404(Trainer, pk=self.kwargs["pk"])
-#         context = super().get_context_data(**kwargs)
-#         trainer_dico = model_to_dict(trainer)
-#         print(trainer_dico)
-#         types = trainer_dico["types"]
-#         type_list = []
-#         for sometype in types:
-#             type_list.append({"id": sometype.id, "name": sometype.name})
-#         trainer_dico["types"] = type_list
-#         print(type(trainer_dico))
-#         trainer_dico = json.dumps(trainer_dico)
+    def get_context_data(self, **kwargs):
+        trainer = get_object_or_404(Trainer, pk=self.kwargs["pk"])
+        context = super().get_context_data(**kwargs)
+        trainer_dico = model_to_dict(trainer)
+        print(trainer_dico)
+        # types = trainer_dico["types"]
+        # type_list = []
+        # for sometype in types:
+        #     type_list.append({"id": sometype.id, "name": sometype.name})
+        # trainer_dico["types"] = type_list
+        print(type(trainer_dico))
+        trainer_dico = json.dumps(trainer_dico)
         
-#         context["trainer_list"] = trainer_dico
-#         context['trainer_id'] = self.kwargs["pk"]
-#         return context
+        context["trainer_list"] = trainer_dico
+        context['trainer_id'] = self.kwargs["pk"]
+        return context
     
-# class TrainerDetailJsView(View):
-#     def get(self, request, *args, **kwargs):
-#         trainer = get_object_or_404(Trainer, pk=self.kwargs["pk"])
-#         trainer_js = model_to_dict(Trainer)
-#         return JsonResponse({"trainer": trainer_js})
+class TrainerDetailJsView(View):
+    def get(self, request, *args, **kwargs):
+        trainer = get_object_or_404(Trainer, pk=self.kwargs["pk"])
+        trainer_js = model_to_dict(Trainer)
+        return JsonResponse({"trainer": trainer_js})

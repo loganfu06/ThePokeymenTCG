@@ -16,7 +16,7 @@ urlpatterns = [
     path("", views.homeView, name='home'),
     path("bis/<int:pk>", views.PokemonDetailbisView.as_view(), name="pokemon_detail_bis",),
     path( "js/<int:pk>", views.PokemonDetailJsView.as_view(), name="pokemon_detail_js", ),
-    # path("bis/<int:pk>", views.TrainerDetailbisView.as_view(), name="trainer_detail_bis",),
-    # path( "js/<int:pk>", views.TrainerDetailJsView.as_view(), name="trainer_detail_js", ),
+    path("bisT/<int:pk>", views.TrainerDetailbisView.as_view(), name="trainer_detail_bisT",),
+    path( "js/<int:pk>", views.TrainerDetailJsView.as_view(), name="trainer_detail_js", ),
 
 ]
