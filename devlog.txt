@@ -1,6 +1,9 @@
 LoganF -- 2024-05-27 23:18
 Group worked on design document over weekend; submitted for review. Started basic project start (django files, requirements_env, etc).
 
+JonathanY -- 2024-05-27 23:20
+added .gitignore
+
 LoganF -- 2024-05-28 23:06
 Made the models from the design doc into django. Implemented an initial data view, and a view that inserts a pokemon card from their card ID into the respective model database by calling the API.
 
@@ -13,17 +16,26 @@ Created the url, pokemon_list.html template, and list view. Fixed problem with m
 MarcusN -- 2024-05-29 14:50
 Added authentication and base.html. Fixed pgadmin bugs and worked on templates. Added messages
 
+JonathanY -- 2024-05-29 14:51
+Started working on pokemon_details view, but couldn't get vue and django to communicate properly
+
 CalvinP -- 2024-05-30 14:45
 Successfully displayed card name and image on list view.
 
 MarcusN -- 2024-05-30 14:50
 Created home page and navbar. Got started on detail view, but had little success.
 
+JonathanY -- 2024-05-30 14:51
+Swapped duties with Marcus, and now is focused on trainer and energy view.
+
 LoganF -- 2024-05-31 22:49
 Got search data from api in an accessible array in Vue. Need to work on displaying search results in a reactive table (ie filtered by rarity, price, etc)
 
 CalvinP -- 2024-06-01 23:50
 Updated pokemon list view, looks a lot better and now extends base
+
+JonathanY -- 2024-06-02 18:37
+Worked on trainer view, but had trouble using vite.
 
 LoganF -- 2024-06-03 18:00
 Worked on displaying search results, and added an option to filter by rarity. Buttons also add the proper card. Need to work on the CSS to make it look nice.
@@ -33,3 +45,15 @@ Worked on detailbis, fixed many errors, tried to get data onto vue
 
 MarcusN -- 2024-06-03 20:56
 Completed detail bis, now displays name and card. Added clickable cards onto pokemon_list that send you to detail view.
+
+JonathanY -- 2024-06-03 20:12
+Worked on trainer vue and view, but keep encoutnering bugs regarding how vue and django work together
+
+LoganF -- 2024-06-10 13:44
+Finished the css for displaying search results, fixed error in detail view. Need to work on view that takes user input and redirects to search results url.
+
+JonathanY -- 2024-06-11 14:47
+Got detail and energy views to work. Will now add more information to it and make it look nicer.
+
+MarcusN -- 2024-06-07 19:40
+Finished detailbis, added various fields like price, rarity, type, and highest market value.
