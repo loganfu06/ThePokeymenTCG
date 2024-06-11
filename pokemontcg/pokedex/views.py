@@ -299,3 +299,6 @@ class PokemonDetailJsView(View):
         pokemon = get_object_or_404(Pokemon, pk=self.kwargs["pk"])
         pokemon_js = model_to_dict(Pokemon)
         return JsonResponse({"pokemon": pokemon_js})
+
+def searchInputView(request):
+    return render(request, 'pokedex/search.html')
