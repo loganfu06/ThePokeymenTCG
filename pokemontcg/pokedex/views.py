@@ -162,6 +162,10 @@ def createPokemonCard(request, card_id):
                 if Pokemon.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
+                    messages.add_message(
+                        request, messages.ERROR,
+                        'Card "' + card_data['name'] + '" already exists.'
+                    )
                     return redirect('pokedex:pokemon_list')
                 
                 conditions = card_data['tcgplayer']['prices']
@@ -191,6 +195,10 @@ def createPokemonCard(request, card_id):
                 if Trainer.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
+                    messages.add_message(
+                        request, messages.ERROR,
+                        'Card "' + card_data['name'] + '" already exists.'
+                    )
                     return redirect('pokedex:trainer_list')
                 
                 conditions = card_data['tcgplayer']['prices']
@@ -215,6 +223,10 @@ def createPokemonCard(request, card_id):
                 if Energy.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
+                    messages.add_message(
+                        request, messages.ERROR,
+                        'Card "' + card_data['name'] + '" already exists.'
+                    )
                     return redirect('pokedex:energy_list')
                 
                 conditions = card_data['tcgplayer']['prices']
@@ -234,7 +246,13 @@ def createPokemonCard(request, card_id):
                 current_energy.save()
         except KeyError:
             # Add message about missing key from API (NOT MY FAULT BRO)
+            messages.add_message(
+                        request, messages.ERROR,
+                        'Card "' + card_data['name'] + '" has missing data from API.'
+                    )
             print("This card is missing data from API")
+            return redirect('pokedex:pokemon_list')
+
 
 
 
@@ -302,3 +320,4 @@ class PokemonDetailJsView(View):
 
 def searchInputView(request):
     return render(request, 'pokedex/search.html')
+
