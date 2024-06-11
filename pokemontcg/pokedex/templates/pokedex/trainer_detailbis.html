@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% load django_vite %} {% block content %}
+<div id="app">
+	<app></app>
+</div>
+{% endblock content %} {% block js %} {{ block.super }}
+<script>
+	var ext_id = {{ trainer_id | safe }};
+    var ext_trainer_dico = {{ trainer_list | safe }};
+	var ext_trainer_detail_js_url = '{% url 'pokedex:trainer_detail_js' trainer_id %}';
+	var ext_trainer_list_url = '{% url 'pokedex:trainer_list' %}';
+</script>
+{% vite_hmr_client %} {% vite_asset 'src/apps/trainer_detail/trainer_detail.js' %} {% endblock js %}
