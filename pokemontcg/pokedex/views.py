@@ -326,6 +326,36 @@ class TrainerDetailbisView(TemplateView):
     
 class TrainerDetailJsView(View):
     def get(self, request, *args, **kwargs):
-        trainer = get_object_or_404(Trainer, pk=self.kwargs["pk"])
-        trainer_js = model_to_dict(Trainer)
-        return JsonResponse({"trainer": trainer_js})
+        energy = get_object_or_404(Trainer, pk=self.kwargs["pk"])
+        energy_js = model_to_dict(Trainer)
+        return JsonResponse({"energy": energy_js})
+    
+class EnergyDetailbisView(TemplateView):
+    template_name = "pokedex/energy_detailbisE.html"
+    
+    def get(self, request, *args, **kwargs):
+        energy = get_object_or_404(Energy, pk=self.kwargs["pk"])
+        return super().get(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        energy = get_object_or_404(Energy, pk=self.kwargs["pk"])
+        context = super().get_context_data(**kwargs)
+        energy_dico = model_to_dict(energy)
+        print(energy_dico)
+        # types = energy_dico["types"]
+        # type_list = []
+        # for sometype in types:
+        #     type_list.append({"id": sometype.id, "name": sometype.name})
+        # energy_dico["types"] = type_list
+        print(type(energy_dico))
+        energy_dico = json.dumps(energy_dico)
+        
+        context["energy_list"] = energy_dico
+        context['energy_id'] = self.kwargs["pk"]
+        return context
+    
+class EnergyDetailJsView(View):
+    def get(self, request, *args, **kwargs):
+        energy = get_object_or_404(Energy, pk=self.kwargs["pk"])
+        energy_js = model_to_dict(Energy)
+        return JsonResponse({"energy": energy_js})

@@ -18,5 +18,7 @@ urlpatterns = [
     path( "js/<int:pk>", views.PokemonDetailJsView.as_view(), name="pokemon_detail_js", ),
     path("bisT/<int:pk>", views.TrainerDetailbisView.as_view(), name="trainer_detail_bisT",),
     path( "js/<int:pk>", views.TrainerDetailJsView.as_view(), name="trainer_detail_js", ),
+    path("bisE/<int:pk>", views.EnergyDetailbisView.as_view(), name="energy_detail_bisE",),
+    path( "js/<int:pk>", views.EnergyDetailJsView.as_view(), name="energy_detail_js", ),
 
 ]
