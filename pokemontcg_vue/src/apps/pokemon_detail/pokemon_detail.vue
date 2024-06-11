@@ -9,22 +9,22 @@
           image = models.CharField()
           prices = models.JSONField(default=list)
           highest_market_price = models.FloatField() -->
-      <h1>Name: {{this.pokemon.name}}</h1>
+      <h1>{{this.pokemon.name}}</h1>
       <table class="table table-condensed">
         <tr>
         <td><img :src="this.pokemon.image" width="80%"></td>
         <td>
-          <h1>Types:</h1>
-          <ul v-for="t in types" v-bind:key="t" class="list-group"><li><h3>{{ t.name }}</h3></li></ul>
+          <h1>Type(s):</h1>
+          <ul v-for="t in types" v-bind:key="t"><li><h3>{{ t.name }}</h3></li></ul>
           <h1>Rarity: {{ this.pokemon.rarity }}</h1>
           <h1>Prices:</h1>
-          <ul v-for="foil, key in prices.prices" v-bind:key="foil" class="list-group">
-            <li class="list-group-item">
+          <ul v-for="foil, key in prices.prices" v-bind:key="foil">
+            <li>
             <h2>{{ key }}</h2>
-            <ul v-for="price, key in foil" v-bind:key="price"><li v-if="price != null">{{ key }}: {{ price }}</li><li v-if="price == null">{{ key }}: N/A</li></ul>
+            <ul v-for="price, key in foil" v-bind:key="price"><li v-if="price != null">{{ key }}: ${{ price }}</li><li v-if="price == null">{{ key }}: N/A</li></ul>
             </li>
           </ul>
-          <h1>Highest Market Price: {{ this.pokemon.highest_market_price }}</h1>
+          <h1>Highest Market Price: ${{ this.pokemon.highest_market_price }}</h1>
         </td>
         </tr>
       </table>
