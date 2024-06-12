@@ -60,3 +60,6 @@ Finished detailbis, added various fields like price, rarity, type, and highest m
 
 LoganF -- 2024-06-11 20:18
 Made user input search bar that returns the results view, added css to make it look nice. Need to work on delete views.
+
+JonathanY -- 2024-06-12 00:18
+Added all information needed for trainer and energy detail.
