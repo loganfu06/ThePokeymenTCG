@@ -49,6 +49,18 @@ class TrainerListView(LoginRequiredMixin, ListView):
         context['trainer_names'] = TrainerNames.objects.all()
         return context
     
+class TrainerDeleteView(DeleteView):
+    model = Trainer
+    success_url = reverse_lazy("pokedex:trainer_list")
+    
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.add_message(
+            self.request, messages.SUCCESS,
+            'Trainer card "{trainer_name}" has been deleted'.format(
+                trainer_name=self.object.name.capitalize()))
+        return response
+    
 class EnergyListView(LoginRequiredMixin, ListView):
     model = Energy
 
@@ -56,6 +68,18 @@ class EnergyListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['energy_names'] = EnergyNames.objects.all()
         return context
+    
+class EnergyDeleteView(DeleteView):
+    model = Energy
+    success_url = reverse_lazy("pokedex:energy_list")
+    
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.add_message(
+            self.request, messages.SUCCESS,
+            'Energy card "{energy_name}" has been deleted'.format(
+                energy_name=self.object.name.capitalize()))
+        return response
 
 def loadInitialData(request):
     if Type.objects.count() > 0:

@@ -17,5 +17,7 @@
     var ext_energy_dico = {{ energy_list | safe }};
 	var ext_energy_detail_js_url = '{% url 'pokedex:energy_detail_js' energy_id %}';
 	var ext_energy_list_url = '{% url 'pokedex:energy_list' %}';
+	var ext_energy_delete_url = '{% url 'pokedex:energy_delete' energy_id %}';
+
 </script>
 {% vite_hmr_client %} {% vite_asset 'src/apps/energy_detail/energy_detail.js' %} {% endblock js %}

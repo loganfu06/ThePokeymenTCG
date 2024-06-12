@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2><a :href="this.trainer_delete_url">Delete this card</a></h2>
     <h1>Name: {{ this.trainer.name }}</h1>
     <img :src="this.trainer.image" width="50%" />
   </div>
@@ -13,7 +14,8 @@ export default {
       trainer: ext_trainer_dico,
       types: ext_trainer_dico.types,
       id: ext_id,
-      trainer_list_url: ext_trainer_list_url
+      trainer_list_url: ext_trainer_list_url,
+      trainer_delete_url: ext_trainer_delete_url,
     }
   },
   methods: {

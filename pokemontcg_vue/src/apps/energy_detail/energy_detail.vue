@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2><a :href="this.energy_delete_url">Delete this card</a></h2>
     <h1>Name: {{ this.energy.name }}</h1>
     <img :src="this.energy.image" width="50%" />
   </div>
@@ -13,7 +14,9 @@ export default {
       energy: ext_energy_dico,
       types: ext_energy_dico.types,
       id: ext_id,
-      energy_list_url: ext_energy_list_url
+      energy_list_url: ext_energy_list_url,
+      energy_delete_url: ext_energy_delete_url,
+
     }
   },
   methods: {
