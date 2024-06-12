@@ -51,3 +51,18 @@ Worked on trainer vue and view, but keep encoutnering bugs regarding how vue and
 
 LoganF -- 2024-06-10 13:44
 Finished the css for displaying search results, fixed error in detail view. Need to work on view that takes user input and redirects to search results url.
+
+JonathanY -- 2024-06-11 14:47
+Got detail and energy views to work. Will now add more information to it and make it look nicer.
+
+MarcusN -- 2024-06-07 19:40
+Finished detailbis, added various fields like price, rarity, type, and highest market value.
+
+LoganF -- 2024-06-11 20:18
+Made user input search bar that returns the results view, added css to make it look nice. Need to work on delete views.
+
+JonathanY -- 2024-06-12 00:18
+Added all information needed for trainer and energy detail.
+
+LoganF -- 2024-06-12 01:24
+Made delete views for pokemon, trainer, and energy. Need to assist in data science portion.

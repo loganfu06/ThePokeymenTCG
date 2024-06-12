@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search for Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 250px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            color: #333;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #66afe9;
+            box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+        }
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search for cards</h1>
+        <div>
+        <input type='text' id='userInput' placeholder='Type card/pokemon name here'>
+        <br> <br>
+        <input type='button' onclick='loadUrl()' value='Search' />
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function loadUrl() {
+        var userInput = document.getElementById('userInput').value;
+        console.log(userInput)
+        var baseUrl = '{% url 'pokedex:search' 1 %}'
+        baseUrl = baseUrl.slice(0, -1)
+        console.log(baseUrl)
+        var searchUrl = baseUrl + userInput
+        window.location.href = searchUrl
+    }
+</script>  
+
+{% endblock content %}

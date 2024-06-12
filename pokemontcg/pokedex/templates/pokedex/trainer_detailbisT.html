@@ -13,10 +13,11 @@
 </div>
 {% endblock content %} {% block js %} {{ block.super }}
 <script>
-	var ext_id = {{ pokemon_id | safe }};
-    var ext_pokemon_dico = {{ pokemon_list | safe }};
-	var ext_pokemon_detail_js_url = '{% url 'pokedex:pokemon_detail_js' pokemon_id %}';
-	var ext_pokemon_list_url = '{% url 'pokedex:pokemon_list' %}';
-	var ext_pokemon_delete_url = '{% url 'pokedex:pokemon_delete' pokemon_id %}';
+	var ext_id = {{ trainer_id | safe }};
+    var ext_trainer_dico = {{ trainer_list | safe }};
+	var ext_trainer_detail_js_url = '{% url 'pokedex:trainer_detail_js' trainer_id %}';
+	var ext_trainer_list_url = '{% url 'pokedex:trainer_list' %}';
+	var ext_trainer_delete_url = '{% url 'pokedex:trainer_delete' trainer_id %}';
+
 </script>
-{% vite_hmr_client %} {% vite_asset 'src/apps/pokemon_detail/pokemon_detail.js' %} {% endblock js %}
+{% vite_hmr_client %} {% vite_asset 'src/apps/trainer_detail/trainer_detail.js' %} {% endblock js %}
