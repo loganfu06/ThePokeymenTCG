@@ -1,4 +1,13 @@
 {% extends "base.html" %} {% load django_vite %} {% block content %}
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+ 	<!-- jQuery library -->
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+ 
+ 	<!-- Latest compiled JavaScript -->
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+</head>
 <div id="app">
 	<app></app>
 </div>
@@ -8,5 +17,6 @@
     var ext_pokemon_dico = {{ pokemon_list | safe }};
 	var ext_pokemon_detail_js_url = '{% url 'pokedex:pokemon_detail_js' pokemon_id %}';
 	var ext_pokemon_list_url = '{% url 'pokedex:pokemon_list' %}';
+	var ext_pokemon_delete_url = '{% url 'pokedex:pokemon_delete' pokemon_id %}';
 </script>
 {% vite_hmr_client %} {% vite_asset 'src/apps/pokemon_detail/pokemon_detail.js' %} {% endblock js %}

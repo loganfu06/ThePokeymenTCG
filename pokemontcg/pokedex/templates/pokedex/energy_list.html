@@ -49,8 +49,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pokédex List</h1>
-        <div class="energy">
+        <h1>Energy List</h1>
+        <div class="pokemon">
             {% for energy in object_list %}
             <div class="energy-card">
                 <a href="{% url 'pokedex:energy_detail_bisE' pk=energy.id %}"> <img class="energy-img" src="{{ energy.image }}" alt="{{ energy.name }}"> </a>

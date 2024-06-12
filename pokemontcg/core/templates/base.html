@@ -34,7 +34,7 @@
             <li><a href="{% url 'pokedex:pokemon_list' %}">Pokemon List</a></li>
             <li><a href="{% url 'pokedex:trainer_list' %}">Trainer List</a></li>
             <li><a href="{% url 'pokedex:energy_list' %}">Energy List</a></li>
-            {% comment %} <li><a href="{% url 'pokedex:search' %}">Search</a></li> {% endcomment %}
+            <li><a href="{% url 'pokedex:searchInput' %}">Search for cards</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}

@@ -14,6 +14,10 @@ from django.forms.models import model_to_dict
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views import View
+from django.urls import reverse, reverse_lazy
+from django.views.generic.edit import DeleteView
+
+
 
 # Create your views here.
 
@@ -24,6 +28,18 @@ class PokemonListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['pokemon_names'] = PokemonNames.objects.all()
         return context
+    
+class PokemonDeleteView(DeleteView):
+    model = Pokemon
+    success_url = reverse_lazy("pokedex:pokemon_list")
+    
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.add_message(
+            self.request, messages.SUCCESS,
+            'Pokemon card "{pokemon_name}" has been deleted'.format(
+                pokemon_name=self.object.name.capitalize()))
+        return response
     
 class TrainerListView(LoginRequiredMixin, ListView):
     model = Trainer
@@ -162,13 +178,19 @@ def createPokemonCard(request, card_id):
                 if Pokemon.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
+                    messages.add_message(
+                        request, messages.ERROR,
+                        'Card "' + card_data['name'] + '" already exists.'
+                    )
                     return redirect('pokedex:pokemon_list')
                 
                 conditions = card_data['tcgplayer']['prices']
                 highest_market = 0
                 for condition in conditions:
                     current_market = card_data['tcgplayer']['prices'][condition]['market']
-                    if current_market > highest_market:
+                    if current_market == None:
+                        continue
+                    elif current_market > highest_market:
                         highest_market = current_market
 
                 current_pokemon = Pokemon(
@@ -191,13 +213,19 @@ def createPokemonCard(request, card_id):
                 if Trainer.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
+                    messages.add_message(
+                        request, messages.ERROR,
+                        'Card "' + card_data['name'] + '" already exists.'
+                    )
                     return redirect('pokedex:trainer_list')
                 
                 conditions = card_data['tcgplayer']['prices']
                 highest_market = 0
                 for condition in conditions:
                     current_market = card_data['tcgplayer']['prices'][condition]['market']
-                    if current_market > highest_market:
+                    if current_market == None:
+                        continue
+                    elif current_market > highest_market:
                         highest_market = current_market
 
                 current_trainer = Trainer(
@@ -215,13 +243,19 @@ def createPokemonCard(request, card_id):
                 if Energy.objects.filter(card_id=card_data['id']).exists():
                     # Add code for error message about card already existing
                     print("Pokemon card already exists")
+                    messages.add_message(
+                        request, messages.ERROR,
+                        'Card "' + card_data['name'] + '" already exists.'
+                    )
                     return redirect('pokedex:energy_list')
                 
                 conditions = card_data['tcgplayer']['prices']
                 highest_market = 0
                 for condition in conditions:
                     current_market = card_data['tcgplayer']['prices'][condition]['market']
-                    if current_market > highest_market:
+                    if current_market == None:
+                        continue
+                    elif current_market > highest_market:
                         highest_market = current_market
 
                 current_energy = Energy(
@@ -234,7 +268,13 @@ def createPokemonCard(request, card_id):
                 current_energy.save()
         except KeyError:
             # Add message about missing key from API (NOT MY FAULT BRO)
+            messages.add_message(
+                        request, messages.ERROR,
+                        'Card "' + card_data['name'] + '" has missing data from API.'
+                    )
             print("This card is missing data from API")
+            return redirect('pokedex:pokemon_list')
+
 
 
 
@@ -300,62 +340,6 @@ class PokemonDetailJsView(View):
         pokemon_js = model_to_dict(Pokemon)
         return JsonResponse({"pokemon": pokemon_js})
 
-class TrainerDetailbisView(TemplateView):
-    template_name = "pokedex/trainer_detailbisT.html"
-    
-    def get(self, request, *args, **kwargs):
-        trainer = get_object_or_404(Trainer, pk=self.kwargs["pk"])
-        return super().get(request, *args, **kwargs)
-    
-    def get_context_data(self, **kwargs):
-        trainer = get_object_or_404(Trainer, pk=self.kwargs["pk"])
-        context = super().get_context_data(**kwargs)
-        trainer_dico = model_to_dict(trainer)
-        print(trainer_dico)
-        # types = trainer_dico["types"]
-        # type_list = []
-        # for sometype in types:
-        #     type_list.append({"id": sometype.id, "name": sometype.name})
-        # trainer_dico["types"] = type_list
-        print(type(trainer_dico))
-        trainer_dico = json.dumps(trainer_dico)
-        
-        context["trainer_list"] = trainer_dico
-        context['trainer_id'] = self.kwargs["pk"]
-        return context
-    
-class TrainerDetailJsView(View):
-    def get(self, request, *args, **kwargs):
-        energy = get_object_or_404(Trainer, pk=self.kwargs["pk"])
-        energy_js = model_to_dict(Trainer)
-        return JsonResponse({"energy": energy_js})
-    
-class EnergyDetailbisView(TemplateView):
-    template_name = "pokedex/energy_detailbisE.html"
-    
-    def get(self, request, *args, **kwargs):
-        energy = get_object_or_404(Energy, pk=self.kwargs["pk"])
-        return super().get(request, *args, **kwargs)
-    
-    def get_context_data(self, **kwargs):
-        energy = get_object_or_404(Energy, pk=self.kwargs["pk"])
-        context = super().get_context_data(**kwargs)
-        energy_dico = model_to_dict(energy)
-        print(energy_dico)
-        # types = energy_dico["types"]
-        # type_list = []
-        # for sometype in types:
-        #     type_list.append({"id": sometype.id, "name": sometype.name})
-        # energy_dico["types"] = type_list
-        print(type(energy_dico))
-        energy_dico = json.dumps(energy_dico)
-        
-        context["energy_list"] = energy_dico
-        context['energy_id'] = self.kwargs["pk"]
-        return context
-    
-class EnergyDetailJsView(View):
-    def get(self, request, *args, **kwargs):
-        energy = get_object_or_404(Energy, pk=self.kwargs["pk"])
-        energy_js = model_to_dict(Energy)
-        return JsonResponse({"energy": energy_js})
+def searchInputView(request):
+    return render(request, 'pokedex/search.html')
+
