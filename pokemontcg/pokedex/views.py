@@ -188,7 +188,9 @@ def createPokemonCard(request, card_id):
                 highest_market = 0
                 for condition in conditions:
                     current_market = card_data['tcgplayer']['prices'][condition]['market']
-                    if current_market > highest_market:
+                    if current_market == None:
+                        continue
+                    elif current_market > highest_market:
                         highest_market = current_market
 
                 current_pokemon = Pokemon(
@@ -221,7 +223,9 @@ def createPokemonCard(request, card_id):
                 highest_market = 0
                 for condition in conditions:
                     current_market = card_data['tcgplayer']['prices'][condition]['market']
-                    if current_market > highest_market:
+                    if current_market == None:
+                        continue
+                    elif current_market > highest_market:
                         highest_market = current_market
 
                 current_trainer = Trainer(
@@ -249,7 +253,9 @@ def createPokemonCard(request, card_id):
                 highest_market = 0
                 for condition in conditions:
                     current_market = card_data['tcgplayer']['prices'][condition]['market']
-                    if current_market > highest_market:
+                    if current_market == None:
+                        continue
+                    elif current_market > highest_market:
                         highest_market = current_market
 
                 current_energy = Energy(
