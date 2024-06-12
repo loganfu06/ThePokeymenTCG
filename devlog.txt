@@ -63,3 +63,6 @@ Made user input search bar that returns the results view, added css to make it l
 
 JonathanY -- 2024-06-12 00:18
 Added all information needed for trainer and energy detail.
+
+LoganF -- 2024-06-12 01:24
+Made delete views for pokemon, trainer, and energy. Need to assist in data science portion.
