@@ -14,6 +14,10 @@ from django.forms.models import model_to_dict
 from django.views.generic import TemplateView
 from django.http import JsonResponse
 from django.views import View
+from django.urls import reverse, reverse_lazy
+from django.views.generic.edit import DeleteView
+
+
 
 # Create your views here.
 
@@ -24,6 +28,18 @@ class PokemonListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['pokemon_names'] = PokemonNames.objects.all()
         return context
+    
+class PokemonDeleteView(DeleteView):
+    model = Pokemon
+    success_url = reverse_lazy("pokedex:pokemon_list")
+    
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.add_message(
+            self.request, messages.SUCCESS,
+            'Pokemon card "{pokemon_name}" has been deleted'.format(
+                pokemon_name=self.object.name.capitalize()))
+        return response
     
 class TrainerListView(LoginRequiredMixin, ListView):
     model = Trainer

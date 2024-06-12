@@ -16,4 +16,6 @@ urlpatterns = [
     path("", views.homeView, name='home'),
     path("bis/<int:pk>", views.PokemonDetailbisView.as_view(), name="pokemon_detail_bis",),
     path( "js/<int:pk>", views.PokemonDetailJsView.as_view(), name="pokemon_detail_js", ),
+    path("delete/<int:pk>", views.PokemonDeleteView.as_view(),
+         name="pokemon_delete"),
 ]

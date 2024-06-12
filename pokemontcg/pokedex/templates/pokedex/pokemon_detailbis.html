@@ -17,5 +17,6 @@
     var ext_pokemon_dico = {{ pokemon_list | safe }};
 	var ext_pokemon_detail_js_url = '{% url 'pokedex:pokemon_detail_js' pokemon_id %}';
 	var ext_pokemon_list_url = '{% url 'pokedex:pokemon_list' %}';
+	var ext_pokemon_delete_url = '{% url 'pokedex:pokemon_delete' pokemon_id %}';
 </script>
 {% vite_hmr_client %} {% vite_asset 'src/apps/pokemon_detail/pokemon_detail.js' %} {% endblock js %}

@@ -1,7 +1,5 @@
 <template>
     <div>
-      <!-- <a :href="this.pokemon_update_url">Update Food</a><br />
-      <a :href="this.pokemon_delete_url">Delete Food</a><br /> -->
       <!-- card_id = models.CharField()
           name = models.CharField()
           types = models.ManyToManyField(Type)
@@ -9,6 +7,7 @@
           image = models.CharField()
           prices = models.JSONField(default=list)
           highest_market_price = models.FloatField() -->
+      <h2><a :href="this.pokemon_delete_url">Delete this card</a></h2>
       <h1>{{this.pokemon.name}}</h1>
       <table class="table table-condensed">
         <tr>
@@ -41,6 +40,7 @@
         prices: ext_pokemon_dico.prices,
         id: ext_id,
         pokemon_list_url: ext_pokemon_list_url,
+        pokemon_delete_url: ext_pokemon_delete_url,
       }
     },
     methods: {
