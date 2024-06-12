@@ -355,13 +355,13 @@ class TrainerDetailbisView(TemplateView):
         trainer = get_object_or_404(Trainer, pk=self.kwargs["pk"])
         context = super().get_context_data(**kwargs)
         trainer_dico = model_to_dict(trainer)
-        print(trainer_dico)
+        # print(trainer_dico)
         # types = trainer_dico["types"]
         # type_list = []
         # for sometype in types:
         #     type_list.append({"id": sometype.id, "name": sometype.name})
         # trainer_dico["types"] = type_list
-        print(type(trainer_dico))
+        # print(type(trainer_dico))
         trainer_dico = json.dumps(trainer_dico)
         
         context["trainer_list"] = trainer_dico
