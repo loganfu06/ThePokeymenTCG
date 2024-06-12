@@ -20,7 +20,6 @@ urlpatterns = [
     path( "js/<int:pk>", views.TrainerDetailJsView.as_view(), name="trainer_detail_js", ),
     path("bisE/<int:pk>", views.EnergyDetailbisView.as_view(), name="energy_detail_bisE",),
     path( "js/<int:pk>", views.EnergyDetailJsView.as_view(), name="energy_detail_js", ),
-
     path("delete/<int:pk>", views.PokemonDeleteView.as_view(),
          name="pokemon_delete"),
 ]
