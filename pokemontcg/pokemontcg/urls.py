@@ -22,5 +22,6 @@ import core.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pokedex/', include('pokedex.urls', namespace='pokedex')),
+    path('cardData/', include('cardData.urls', namespace='cardData')),
     path("accounts/", include("django.contrib.auth.urls")),
 ]
