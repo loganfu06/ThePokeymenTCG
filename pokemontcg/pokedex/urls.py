@@ -5,7 +5,7 @@ from . import views
 app_name = "pokedex"
 
 urlpatterns = [
-    path("search", views.testView, name="search"),
+    path("searchInput", views.searchInputView, name="searchInput"),
     path("pokemon_list", views.PokemonListView.as_view(), name="pokemon_list"),
     path("trainer_list", views.TrainerListView.as_view(), name="trainer_list"),
     path("energy_list", views.EnergyListView.as_view(), name="energy_list"),
@@ -20,5 +20,6 @@ urlpatterns = [
     path( "js/<int:pk>", views.TrainerDetailJsView.as_view(), name="trainer_detail_js", ),
     path("bisE/<int:pk>", views.EnergyDetailbisView.as_view(), name="energy_detail_bisE",),
     path( "js/<int:pk>", views.EnergyDetailJsView.as_view(), name="energy_detail_js", ),
-
+    path("delete/<int:pk>", views.PokemonDeleteView.as_view(),
+         name="pokemon_delete"),
 ]

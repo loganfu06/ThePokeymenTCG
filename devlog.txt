@@ -54,3 +54,9 @@ Finished the css for displaying search results, fixed error in detail view. Need
 
 JonathanY -- 2024-06-11 14:47
 Got detail and energy views to work. Will now add more information to it and make it look nicer.
+
+MarcusN -- 2024-06-07 19:40
+Finished detailbis, added various fields like price, rarity, type, and highest market value.
+
+LoganF -- 2024-06-11 20:18
+Made user input search bar that returns the results view, added css to make it look nice. Need to work on delete views.

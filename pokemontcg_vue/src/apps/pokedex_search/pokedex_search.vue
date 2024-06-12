@@ -1,17 +1,18 @@
 <template>
   <h1>{{ search_data.length }} search results for "{{ card_name }}".</h1>
-  Sort by rarity:
-  <select v-model="current_rarity">
-    <option>None</option>
-    <option v-for="rarity in rarities">{{ rarity }}</option>
-  </select>
-
+  <h2>Sort by rarity: <select v-model="current_rarity">
+      <option>None</option>
+      <option v-for="rarity in rarities">{{ rarity }}</option>
+    </select></h2>
+  <br>
   <div class="container">
     <div class="pokemon">
-      <div class="pokemon-card" v-for="pokemon in search_data" v-show="filterData(pokemon)" @click="createRedirect(pokemon)">
+      <div class="pokemon-card" v-for="pokemon in search_data" v-show="filterData(pokemon)"
+        @click="createRedirect(pokemon)">
         <img class="pokemon-img" :src="getImgUrl(pokemon)">
         <div class="pokemon-name">{{ pokemon['name'] }}</div>
-        <div class="pokemon-rarity" v-if="pokemon['supertype'] == 'Pokémon' || pokemon['supertype'] == 'Trainer'">Rarity: {{ pokemon['rarity'] }}</div>
+        <div class="pokemon-rarity" v-if="pokemon['supertype'] == 'Pokémon' || pokemon['supertype'] == 'Trainer'">
+          Rarity: {{ pokemon['rarity'] }}</div>
       </div>
     </div>
   </div>
