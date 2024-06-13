@@ -75,3 +75,6 @@ Made delete views for pokemon, trainer, and energy. Need to assist in data scien
 
 CalvinP  -- 2024-06-12 17:05
 Fixed the CSS layout for pokemon list and other card lists, now is ordered chronologically. Finished bar graphs for rarities and count. 
+
+MarcusN -- 2024-06-12 20:17
+Finished pie charts for supertype, type, and rarity. Added both pie and bar charts to the showdata page.

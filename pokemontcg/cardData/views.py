@@ -53,8 +53,7 @@ def showData(request):
     colors = ['#dd93ac', '#94e0e8', '#f8c471']
     fig1, ax1 = plt.subplots(figsize=(6, 6))
     ax1.pie(sizes, labels=labels, autopct='%1.0f%%', colors=colors)
-    plt.title('Percentage of cards based on supertype')
-
+    plt.title('Percentage of Cards of Each Supertype')
     buf = io.BytesIO()
     fig1.savefig(buf, format='png')
     buf.seek(0)
