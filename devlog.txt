@@ -43,6 +43,9 @@ Worked on displaying search results, and added an option to filter by rarity. Bu
 MarcusN -- 2024-06-03 14:45
 Worked on detailbis, fixed many errors, tried to get data onto vue
 
+CalvinP -- 2024-06-03 14:46
+Worked on pokemon_list, fixed urls, working on search result view
+
 MarcusN -- 2024-06-03 20:56
 Completed detail bis, now displays name and card. Added clickable cards onto pokemon_list that send you to detail view.
 
@@ -55,6 +58,9 @@ Finished the css for displaying search results, fixed error in detail view. Need
 JonathanY -- 2024-06-11 14:47
 Got detail and energy views to work. Will now add more information to it and make it look nicer.
 
+CalvinP -- 2024-06-07 14:50
+Working on pulling database information from postgres to pandas notebook
+
 MarcusN -- 2024-06-07 19:40
 Finished detailbis, added various fields like price, rarity, type, and highest market value.
 
@@ -66,3 +72,6 @@ Added all information needed for trainer and energy detail.
 
 LoganF -- 2024-06-12 01:24
 Made delete views for pokemon, trainer, and energy. Need to assist in data science portion.
+
+CalvinP  -- 2024-06-12 17:05
+Fixed the CSS layout for pokemon list and other card lists, now is ordered chronologically. Finished bar graphs for rarities and count. 
