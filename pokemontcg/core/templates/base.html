@@ -30,11 +30,12 @@
           </div>
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'pokedex:home' %}">Home</a></li>
-            <li><a href="{% url 'pokedex:loadInitialData' %}">Load Data</a></li>
+            <li><a href="{% url 'pokedex:loadInitialData' %}">Load Initial Data</a></li>
             <li><a href="{% url 'pokedex:pokemon_list' %}">Pokemon List</a></li>
             <li><a href="{% url 'pokedex:trainer_list' %}">Trainer List</a></li>
             <li><a href="{% url 'pokedex:energy_list' %}">Energy List</a></li>
             <li><a href="{% url 'pokedex:searchInput' %}">Search for cards</a></li>
+            <li><a href="{% url 'cardData:showData' %}">Card data</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
