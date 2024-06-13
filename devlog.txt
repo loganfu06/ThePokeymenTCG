@@ -81,3 +81,6 @@ Finished pie charts for supertype, type, and rarity. Added both pie and bar char
 
 LoganF -- 2024-06-12 17:33
 Helped with getting secrets.json information to connect database to matplotlib. Added basic CSS to format the charts in template. Updated/reviewed design doc for submission.
+
+JonathanY -- 2024-06-12 18:38
+Made a bar graph to show the avrage price of cards per rarity for each rarity
