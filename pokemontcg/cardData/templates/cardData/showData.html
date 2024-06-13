@@ -1,15 +1,45 @@
-{% extends "base.html" %}
-
-{%block content%}
+{% extends "base.html" %} {%block content%}
 <head>
-    <title>Card data</title>
+  <title>Card data</title>
+  <style>
+    .container {
+      margin-left: 0;
+      margin-right: auto;
+    }
+    .row {
+      display: flex;
+    }
+
+    .column {
+      flex: 33.33%;
+      padding: 5px;
+    }
+    .center {
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
 </head>
-<h1>Show Data!!!</h1>
-<h2>Pie Charts!!!</h2>
-<img src="data:image/png;base64,{{ piesuper }}" alt="">
-<img src="data:image/png;base64,{{ pietypes }}" alt="">
-<img src="data:image/png;base64,{{ pierarity }}" alt="">
-<img src="data:image/png;base64,{{ barsuper }}" alt="">
-<img src="data:image/png;base64,{{ bartypes }}" alt="">
-<img src="data:image/png;base64,{{ barrarity }}" alt="">
+<h1>Card Data</h1>
+<h2>Pie Charts</h2>
+<div class="container">
+  <div class="row">
+    <div class="column">
+      <img src="data:image/png;base64,{{ piesuper }}" alt="" />
+    </div>
+    <div class="column">
+      <img src="data:image/png;base64,{{ pietypes }}" alt="" />
+    </div>
+    <div class="column">
+      <img src="data:image/png;base64,{{ pierarity }}" alt="" />
+    </div>
+  </div>
+</div>
+<h2>Bar Charts</h2>
+<div class="center">
+  <img src="data:image/png;base64,{{ barsuper }}" alt="" />
+  <img src="data:image/png;base64,{{ bartypes }}" alt="" />
+  <img src="data:image/png;base64,{{ barrarity }}" alt="" />
+</div>
 {% endblock content %}
