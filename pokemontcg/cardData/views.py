@@ -51,6 +51,7 @@ def showData(request):
     colors = ['#dd93ac', '#94e0e8', '#f8c471']
     fig1, ax1 = plt.subplots(figsize=(6, 6))
     ax1.pie(sizes, labels=labels, autopct='%1.0f%%', colors=colors)
+    plt.title('Percentage of Cards of Each Supertype')
     buf = io.BytesIO()
     fig1.savefig(buf, format='png')
     buf.seek(0)
@@ -68,6 +69,7 @@ def showData(request):
     labels = df_type_count['name_type']
     colors = ['#8f8f8f', '#96795a', '#e6975c', '#338039', '#f5e662', '#9265a8', '#5581d4']
     ax2.pie(df_type_count['id'], autopct='%1.0f%%', labels=labels, colors=colors)
+    plt.title('Percentage of Cards of Each Type')
     buf = io.BytesIO()
     fig2.savefig(buf, format='png')
     buf.seek(0)
@@ -80,6 +82,7 @@ def showData(request):
     labels = df_rarity['rarity']
     colors = ['#8c8c8c', '#5399cf', '#d9b92b', '#41a363']
     ax3.pie(df_rarity['id'], autopct='%1.0f%%', labels=labels, colors=colors)
+    plt.title('Percentage of Cards of Each Rarity')
     buf = io.BytesIO()
     fig3.savefig(buf, format='png')
     buf.seek(0)
