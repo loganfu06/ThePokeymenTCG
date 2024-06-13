@@ -156,4 +156,28 @@ def showData(request):
     string = base64.b64encode(buf.read())
     uri6 = urllib.parse.quote(string)
     
-    return render(request, 'cardData/showData.html', {'piesuper': uri1, 'pietypes': uri2, 'pierarity': uri3, 'barsuper': uri4, 'bartypes': uri5, 'barrarity': uri6})
+    ### Average ###
+    df_pokemon_types_link = pd.read_sql('select * from pokedex_pokemon_types', con=engine).set_index('pokemon_id').drop(['id'], axis=1)
+    df_types = pd.read_sql('select * from pokedex_type', con=engine)
+    df_pokemon_types = pd.merge(df_pokemon, df_pokemon_types_link, left_on='id', right_on='pokemon_id')
+    df_pokemon_types = pd.merge(df_pokemon_types, df_types, left_on='type_id', right_on='id', suffixes=[None, '_type']).drop(['id_type'], axis=1)
+    # df_type_count = df_pokemon_types.groupby(['rarity'], as_index=False).sum()
+    # df_type_count = df_pokemon_types.groupby('rarity').agg({'highest_market_price':'mean'}).sort_values(by='highest_market_price', ascending = False)
+    df_type_count = df_pokemon_types.groupby(['rarity'], as_index=False).agg({'highest_market_price':'mean'}).sort_values(by='highest_market_price', ascending = False)
+    df_type_count
+    # fig, ax = plt.subplots(figsize=(6, 6))
+    labels = df_type_count['rarity']
+    # colors = ['#8f8f8f', '#96795a', '#e6975c', '#338039', '#f5e662', '#9265a8', '#5581d4']
+    fig7, ax7 = plt.subplots(figsize=(16, 6))
+    ax7.bar(labels, df_type_count['highest_market_price'], color = colors)
+    plt.title('Average price of cards for each rarity')
+    plt.xlabel('Rarity')
+    plt.ylabel('price')
+    buf = io.BytesIO()
+    fig7.savefig(buf, format='png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri7 = urllib.parse.quote(string)
+    
+    return render(request, 'cardData/showData.html', {'piesuper': uri1, 'pietypes': uri2, 'pierarity': uri3, 'barsuper': uri4, 'bartypes': uri5, 'barrarity': uri6, 
+                                                      'averageprice': uri7})
