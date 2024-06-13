@@ -78,3 +78,6 @@ Fixed the CSS layout for pokemon list and other card lists, now is ordered chron
 
 MarcusN -- 2024-06-12 20:17
 Finished pie charts for supertype, type, and rarity. Added both pie and bar charts to the showdata page.
+
+LoganF -- 2024-06-12 17:33
+Helped with getting secrets.json information to connect database to matplotlib. Added basic CSS to format the charts in template. Updated/reviewed design doc for submission.
